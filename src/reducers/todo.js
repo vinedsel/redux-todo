@@ -6,6 +6,8 @@ const initialState = {
     }
   ],
   addTodoText: "",
+  selectedTodo: null,
+  editTodoText: ""
 };
 
 function todoReducer(state = initialState, action) {
