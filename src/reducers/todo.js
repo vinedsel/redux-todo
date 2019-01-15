@@ -31,6 +31,33 @@ function todoReducer(state = initialState, action) {
         ...state,
         addTodoText: action.text
       }
+      // The following case statement is for selecting a todo item
+    case 'TODO_SELECTED':
+      return {
+        ...state,
+        selectedTodo: action.id,
+        editTodoText: state.items.find(item => item.id === action.id).todo
+      }
+    // The following case statement is for applying edits to a todo item
+    case 'APPLY_TODO_EDITS':
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if(item.id === state.selectedTodo){
+            return {...item, todo: state.editTodoText}
+          }  else {
+            return item
+          }
+        }),
+        editTodoText: "",
+        selectedTodo: null
+      }
+    // The following case statement is for the actual updating of the todo item
+    case 'TODO_EDIT_TEXT_CHANGED':
+      return {
+        ...state,
+        editTodoText: action.text
+      }
 
     default:
       return state;
