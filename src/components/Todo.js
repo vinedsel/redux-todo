@@ -1,8 +1,19 @@
 import React from 'react';
 
-const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText }) => {
+const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText, selectedItem, onTodoSelected, onApplyTodoEdit, onTodoEditTextChanged, editTodoText }) => {
 
-  const todoToListItem = item => <li key={item.id}>{item.todo}</li>;
+  const todoToListItem = item => {
+    if(item.id === selectedItem){
+      return <span key={item.id}>
+                <input onChange={event => onTodoEditTextChanged(event.target.value)} type="text" value={editTodoText} />
+                <button onClick={() => onApplyTodoEdit(item.id)}>Update</button>
+            </span>
+    }else{
+      return <span>
+      <li key={item.id}>onClick={() => onTodoSelected(item.id)}>{item.todo}</li>
+              </span>
+    }
+  };
 
   const itemList = items.map(todoToListItem);
 
