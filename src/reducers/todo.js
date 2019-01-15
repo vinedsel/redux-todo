@@ -6,6 +6,7 @@ const initialState = {
     }
   ],
   addTodoText: "",
+  // The following fields are needed in your state for selecting and updating a todo item
   selectedTodo: null,
   editTodoText: ""
 };
@@ -31,7 +32,7 @@ function todoReducer(state = initialState, action) {
         ...state,
         addTodoText: action.text
       }
-      // The following case statement is for selecting a todo item
+    // The following case statement is for selecting a todo item
     case 'TODO_SELECTED':
       return {
         ...state,
@@ -58,7 +59,6 @@ function todoReducer(state = initialState, action) {
         ...state,
         editTodoText: action.text
       }
-
     default:
       return state;
   }

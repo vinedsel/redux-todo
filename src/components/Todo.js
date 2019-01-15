@@ -10,7 +10,7 @@ const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText, selectedIt
             </span>
     }else{
       return <span>
-      <li key={item.id}>onClick={() => onTodoSelected(item.id)}>{item.todo}</li>
+                <li key={item.id} onClick={() => onTodoSelected(item.id)}>{item.todo}</li>
               </span>
     }
   };
