@@ -59,6 +59,12 @@ function todoReducer(state = initialState, action) {
         ...state,
         editTodoText: action.text
       }
+      // The following case statement handles the state when an item is removed
+    case 'REMOVE_TODO':
+      return {
+        ...state,
+        items: state.items.filter(todo => todo.id !== action.id)
+      };
     default:
       return state;
   }
