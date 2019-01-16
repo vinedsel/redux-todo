@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText, selectedItem, onTodoSelected, onApplyTodoEdit, onTodoEditTextChanged, editTodoText }) => {
+const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText, selectedItem, onTodoSelected, onApplyTodoEdit, onTodoEditTextChanged, editTodoText, onRemoveTodo }) => {
 
   const todoToListItem = item => {
     if(item.id === selectedItem){
@@ -11,6 +11,7 @@ const TodoList = ({ items, onAddTodo, onTodoTextChanged, addTodoText, selectedIt
     }else{
       return <span>
                 <li key={item.id} onClick={() => onTodoSelected(item.id)}>{item.todo}</li>
+                <button onClick={() => onRemoveTodo(item.id)}>Remove Todo</button>
               </span>
     }
   };
