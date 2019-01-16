@@ -34,3 +34,11 @@ export const todoEditTextChanged = (text) => (
         text
     }
 )
+
+//delete a todo item
+export const removeTodo = (id) => (
+    {
+        type: 'REMOVE_TODO',
+        id
+    }
+)
